@@ -3,7 +3,14 @@ project("SO2_project")
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(main_app main.cpp)
+
+
+set(SOURCES
+        main.cpp
+        src/Flower.h
+        src/Flower.cpp)
+
+add_executable(main_app ${SOURCES})
 
 
 # Adding sfml
@@ -12,3 +19,4 @@ if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(main_app ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 endif()
+
