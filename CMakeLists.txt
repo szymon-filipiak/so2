@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.15)
 project("SO2_project")
 
 set(CMAKE_CXX_STANDARD 20)
@@ -12,7 +12,7 @@ set(SOURCES
         src/Hive.cpp
         src/Hive.h
         src/Bee.cpp
-        src/Bee.h src/Utils.cpp src/Utils.h src/Position.cpp src/Position.h src/Beekeeper.cpp src/Beekeeper.h)
+        src/Bee.h src/Utils.cpp src/Utils.h src/Position.cpp src/Position.h src/Beekeeper.cpp src/Beekeeper.h src/Random_position_gen.cpp src/Random_position_gen.h)
 
 add_executable(main_app ${SOURCES})
 
