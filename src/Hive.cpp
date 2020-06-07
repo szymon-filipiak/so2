@@ -27,7 +27,7 @@ bool Hive::is_free() {
     return capacity > bees_count;
 }
 
-Hive::Hive(Position pos, int capacity) : pos(pos), capacity(capacity){
+Hive::Hive(Position pos, size_t capacity) : pos(pos), capacity(capacity){
 
 }
 

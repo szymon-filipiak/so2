@@ -14,7 +14,9 @@ void Beekeeper::operator()(Hive &hive) {
             _dest = HOME;
             std::this_thread::sleep_for(std::chrono::milliseconds{500});
         } else if(_dest == HOME && in_home()){
-            kill();
+            //kill();
+            std::this_thread::sleep_for(std::chrono::seconds{5});
+            _dest = HIVE;
         }
         else {
             std::this_thread::sleep_for(std::chrono::milliseconds{500});
@@ -97,6 +99,6 @@ void Beekeeper::kill(){
 }
 
 
-Beekeeper::Beekeeper(int capacity, Position init_pos, Destination init_dest) : capacity{capacity}, pos{init_pos}, _dest{init_dest}, is_alive{true}{
+Beekeeper::Beekeeper(int capacity, Position init_pos, Destination init_dest) : capacity{capacity}, pos{init_pos}, init_pos{init_pos}, _dest{init_dest}, is_alive{true}{
 
 }

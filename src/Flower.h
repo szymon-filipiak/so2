@@ -15,11 +15,11 @@ public:
     Position pos;
     bool collect_pollen();
     void kill();
+    std::atomic<bool> has_pollen;
 private:
     bool _is_alive;
     std::mutex pollen_mutex;
-    std::chrono::seconds _refresh_rate;
-    std::atomic_flag _has_pollen;
+    std::chrono::seconds _refresh_rate{};
 };
 
 

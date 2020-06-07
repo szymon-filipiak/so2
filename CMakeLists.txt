@@ -12,7 +12,14 @@ set(SOURCES
         src/Hive.cpp
         src/Hive.h
         src/Bee.cpp
-        src/Bee.h src/Utils.cpp src/Utils.h src/Position.cpp src/Position.h src/Beekeeper.cpp src/Beekeeper.h)
+        src/Bee.h
+        src/Utils.cpp
+        src/Utils.h
+        src/Position.cpp
+        src/Position.h
+        src/Beekeeper.cpp
+        src/Beekeeper.h
+        include/cxxopts.hpp)
 
 add_executable(main_app ${SOURCES})
 
@@ -27,3 +34,4 @@ if(SFML_FOUND)
     target_link_libraries(main_app ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 endif()
 
+target_link_libraries(main_app sfml-graphics sfml-window sfml-system)

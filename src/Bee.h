@@ -5,6 +5,7 @@
 #include "Flower.h"
 #include "Hive.h"
 #include "Utils.h"
+#include <atomic>
 
 class Bee {
 public:

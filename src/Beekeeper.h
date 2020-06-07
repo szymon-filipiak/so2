@@ -7,7 +7,7 @@ class Beekeeper {
 public:
     void operator()(Hive& hive);
 
-    explicit Beekeeper(int capacity, Position init_pos = {-1, 5},Destination init_dest = {HIVE});
+    explicit Beekeeper(int capacity, Position init_pos,Destination init_dest = HIVE);
 
     Position pos;
 private:

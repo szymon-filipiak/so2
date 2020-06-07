@@ -2,10 +2,16 @@
 #define SO2_PROJECT_POSITION_H
 
 
+#include <atomic>
+
 class Position {
 public:
-    int x;
-    int y;
+    Position(Position &position);
+
+    Position(int i, int i1);
+
+    std::atomic<int> x;
+    std::atomic<int> y;
 
     bool operator==(const Position &rhs) const;
 
