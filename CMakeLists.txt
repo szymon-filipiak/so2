@@ -1,17 +1,24 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.17)
 project("SO2_project")
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 
 
 set(SOURCES
         main.cpp
         src/Flower.h
-        src/Flower.cpp)
+        src/Flower.cpp
+        src/Hive.cpp
+        src/Hive.h
+        src/Bee.cpp
+        src/Bee.h src/Utils.cpp src/Utils.h src/Position.cpp src/Position.h src/BeeManager.cpp src/BeeManager.h)
 
 add_executable(main_app ${SOURCES})
 
+find_package( Threads )
+
+target_link_libraries( main_app ${CMAKE_THREAD_LIBS_INIT} )
 
 # Adding sfml
 find_package(SFML 2 REQUIRED network audio graphics window system)
