@@ -4,8 +4,8 @@
 
 class Position {
 public:
-    unsigned int x;
-    unsigned int y;
+    int x;
+    int y;
 
     bool operator==(const Position &rhs) const;
 

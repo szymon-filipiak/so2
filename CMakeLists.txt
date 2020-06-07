@@ -12,7 +12,7 @@ set(SOURCES
         src/Hive.cpp
         src/Hive.h
         src/Bee.cpp
-        src/Bee.h src/Utils.cpp src/Utils.h src/Position.cpp src/Position.h src/BeeManager.cpp src/BeeManager.h)
+        src/Bee.h src/Utils.cpp src/Utils.h src/Position.cpp src/Position.h src/Beekeeper.cpp src/Beekeeper.h)
 
 add_executable(main_app ${SOURCES})
 
