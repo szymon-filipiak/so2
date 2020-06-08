@@ -3,6 +3,7 @@
 #include "src/Beekeeper.h"
 #include <thread>
 #include "include/cxxopts.hpp"
+#include "src/PositionGenerator.h"
 #include <SFML/Graphics.hpp>
 
 int main(int argc, char** argv)
@@ -38,6 +39,8 @@ int main(int argc, char** argv)
     auto hives_capacity = result["capacity"].as<size_t>();
     auto bee_work_duration = std::chrono::seconds{result["work"].as<size_t>()};
 
+    PositionGenerator pos_gen{NUMBER_OF_BLOCKS, NUMBER_OF_BLOCKS};
+
     void *raw_flowers = operator new[](flowers_count * sizeof(Flower));
     auto *flowers = static_cast<Flower *>(raw_flowers);
 
@@ -52,22 +55,22 @@ int main(int argc, char** argv)
 
     for(int i = 0; i < flowers_count; i++)
     {
-        new(&flowers[i]) Flower{Position{3, 4}, pollen_refresh};
+        new(&flowers[i]) Flower{pos_gen.get_random_position(), pollen_refresh};
     }
 
     for(int i = 0; i < hives_count; i++)
     {
-        new(&hives[i]) Hive(Position{13, 14}, hives_capacity);
+        new(&hives[i]) Hive(pos_gen.get_random_position(), hives_capacity);
     }
 
     for(int i = 0; i < bees_count; i++)
     {
-        new(&bees[i]) Bee{flowers[0], hives[0], Position{5,5}, bee_work_duration};
+        new(&bees[i]) Bee{flowers[rand() % flowers_count], hives[rand() % hives_count], pos_gen.get_random_position(), bee_work_duration};
     }
 
     for(int i = 0; i < beekeepers_count; i++)
     {
-        new(&beekeepers[i]) Beekeeper(200,{-5,1});
+        new(&beekeepers[i]) Beekeeper(200,{-3,5});
     }
 
     //THREADS INIT
@@ -87,7 +90,7 @@ int main(int argc, char** argv)
 
     for (int i = 0; i < beekeepers_count; i++)
     {
-        std::thread beekeeper_thread(std::ref(beekeepers[i]), std::ref(hives[0]));
+        std::thread beekeeper_thread(std::ref(beekeepers[i]), std::ref(hives[rand() % hives_count]));
         beekeeper_thread.detach();
     }
 
@@ -173,6 +176,7 @@ int main(int argc, char** argv)
 
         sf::Sprite hive_sprite;
         hive_sprite.setTexture(hive_texture);
+        hive_sprite.setColor(sf::Color::Black);
         for(int i = 0; i < hives_count; i++)
         {
             hive_sprite.setPosition(hives[i].pos.x * BLOCK_SIZE, hives[i].pos.y * BLOCK_SIZE);

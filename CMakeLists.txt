@@ -19,6 +19,8 @@ set(SOURCES
         src/Position.h
         src/Beekeeper.cpp
         src/Beekeeper.h
+        src/PositionGenerator.cpp
+        src/PositionGenerator.h
         include/cxxopts.hpp)
 
 add_executable(main_app ${SOURCES})
