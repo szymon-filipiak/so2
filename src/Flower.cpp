@@ -1,3 +1,5 @@
+#include <utility>
+
 #include <iostream>
 #include <thread>
 #include "Flower.h"
@@ -26,7 +28,7 @@ bool Flower::collect_pollen() {
     }
 }
 
-Flower::Flower(Position pos, std::chrono::seconds refresh_rate) : pos(pos), _refresh_rate(refresh_rate), has_pollen(true), _is_alive{true}
+Flower::Flower(const Position& pos, std::chrono::seconds refresh_rate) : pos(pos), _refresh_rate(refresh_rate), has_pollen(true), _is_alive{true}
 {
 
 }

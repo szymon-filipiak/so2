@@ -9,7 +9,7 @@
 int main(int argc, char** argv)
 {
     // OPTIONS
-    cxxopts::Options options("test", "A brief description");
+    cxxopts::Options options("main_app", "Multithread, customizable animation of bees' lives");
 
     options.add_options()
             ("b,bees", "Number of bees", cxxopts::value<size_t>()->default_value("2"))
@@ -55,7 +55,8 @@ int main(int argc, char** argv)
 
     for(int i = 0; i < flowers_count; i++)
     {
-        new(&flowers[i]) Flower{pos_gen.get_random_position(), pollen_refresh};
+        auto coords = pos_gen.get_random_position();
+        new(&flowers[i]) Flower{ Position{coords.x, coords.y}, pollen_refresh};
     }
 
     for(int i = 0; i < hives_count; i++)

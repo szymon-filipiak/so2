@@ -12,7 +12,7 @@ public:
     size_t capacity{};
     int bees_count{};
 
-    Hive(Position pos, size_t capacity);
+    Hive(const Position& pos, size_t capacity);
     bool is_free();
 
     bool enter_hive(int bee_id);

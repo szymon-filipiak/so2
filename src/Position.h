@@ -6,8 +6,7 @@
 
 class Position {
 public:
-    Position(Position &position);
-
+    Position(const Position &position);
     Position(int i, int i1);
 
     std::atomic<int> x;

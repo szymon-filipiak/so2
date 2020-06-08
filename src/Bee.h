@@ -15,7 +15,7 @@ public:
 
     BeeState state;
 
-    Bee(Flower& flower, Hive& hive, Position pos, std::chrono::seconds work_time);
+    Bee(Flower& flower, Hive& hive, const Position& pos, std::chrono::seconds work_time);
     void operator()();
 private:
     int id;

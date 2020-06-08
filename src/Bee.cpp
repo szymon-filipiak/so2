@@ -98,10 +98,10 @@ void Bee::move_to_dest() {
 
 int Bee::bees_count = 0;
 
-Bee::Bee(Flower &flower, Hive &hive, Position pos, std::chrono::seconds work_time) :
+Bee::Bee(Flower &flower, Hive &hive, const Position& pos, std::chrono::seconds work_time) :
     flower(flower),
     hive(hive),
-    pos(pos),
+    pos(std::move(pos)),
     work_time(work_time),
     _has_pollen(false)
 {

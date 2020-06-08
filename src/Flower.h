@@ -11,7 +11,7 @@ class Flower {
 public:
     void operator() ();
 
-    explicit Flower(Position pos, std::chrono::seconds refresh_rate = std::chrono::seconds(10));
+    explicit Flower(const Position& pos, std::chrono::seconds refresh_rate);
     Position pos;
     bool collect_pollen();
     void kill();
